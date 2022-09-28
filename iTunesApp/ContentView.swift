@@ -5,17 +5,14 @@
 //  Created by Dev on 20.09.22.
 //
 
+//https://rss.applemarketingtools.com/api/v2/ru/music/most-played/5/songs.js
+
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+            SearchView()
+    
     }
 }
 
