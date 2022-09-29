@@ -28,27 +28,34 @@ struct SearchView: View {
                 .pickerStyle(.segmented)
                 .padding(.horizontal)
                 
+                
                 Divider()
                 
-                switch selectedEntityType {
-                case .all:
-                    SearchAllListView(albumListViewModel: albumListViewModel, songsListViewModel: songsListViewModel, movieListViewModel: movieListViewModel)
-                case .album:
-                    AlbumListView(albumListViewModel: albumListViewModel)
-                        .onAppear{
-                            albumListViewModel.searchTerm = searchTerm
-                        }
-                case .song:
-                    SongListView(songListViewModel: songsListViewModel)
-                        .onAppear{
-                            songsListViewModel.searchTerm = searchTerm
-                        }
-                case .movie:
-                    MovieListView(movieListViewModel: movieListViewModel)
-                        .onAppear{
-                            movieListViewModel.searchTerm = searchTerm
-                        }
+                if searchTerm.isEmpty {
+                    TrendsView(searchTerm: $searchTerm)
+                } else {
+                    switch selectedEntityType {
+                    case .all:
+                        SearchAllListView(albumListViewModel: albumListViewModel, songsListViewModel: songsListViewModel, movieListViewModel: movieListViewModel)
+                    case .album:
+                        AlbumListView(albumListViewModel: albumListViewModel)
+                            .onAppear{
+                                albumListViewModel.searchTerm = searchTerm
+                            }
+                    case .song:
+                        SongListView(songListViewModel: songsListViewModel)
+                            .onAppear{
+                                songsListViewModel.searchTerm = searchTerm
+                            }
+                    case .movie:
+                        MovieListView(movieListViewModel: movieListViewModel)
+                            .onAppear{
+                                movieListViewModel.searchTerm = searchTerm
+                            }
+                    }
                 }
+                
+                
             }
             .navigationTitle("Search")
             .searchable(text: $searchTerm)

@@ -29,6 +29,11 @@ class APIService {
         feth(type: MovieResults.self, url: url, completion: completion)
     }
     
+    func feachTrends(count: Int, completion: @escaping (Result<TrendsResult, APIError>) -> ()) {
+        let url = createTrendsURL(count: count)
+        feth(type: TrendsResult.self, url: url, completion: completion)
+    }
+    
     func feth<T: Decodable>(type: T.Type, url: URL?, completion: @escaping (Result<T, APIError>) -> ()) {
         
         guard let url = url else {
@@ -85,5 +90,9 @@ class APIService {
         var components = URLComponents(string: baseURL)
         components?.queryItems = queryItems
         return components?.url
+    }
+    
+    func createTrendsURL(count: Int) -> URL?{
+        return URL(string: "https://rss.applemarketingtools.com/api/v2/ru/music/most-played/\(count)/songs.js")
     }
 }
