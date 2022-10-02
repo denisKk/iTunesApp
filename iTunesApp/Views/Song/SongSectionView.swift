@@ -17,11 +17,14 @@ struct SongSectionView: View {
                 ForEach(songs){ song in
                     
                     HStack{
-                       SongRowView(song: song)
-                            .frame(width: 300)
+                        NavigationLink {
+                            SongDetailView(song: song)
+                        } label: {
+                            SongRowView(song: song)
+                                .frame(width: 300)
+                        }
+                        .buttonStyle(.plain)
                     }
-                    
-                    
                 }
             }
         }

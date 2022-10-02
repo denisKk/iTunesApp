@@ -1,50 +1,34 @@
 //
-//  TrendsListViewModel.swift
+//  AlbumForSongViewModel.swift
 //  iTunesApp
 //
 //  Created by Dev on 29.09.22.
 //
 
 import Foundation
-import Combine
 
-class TrendsListViewModel: ObservableObject {
+class AlbumForSongViewModel: ObservableObject {
     
-    
-   
-    @Published var trends: [Adam] = []
+    @Published var album: Album?
     @Published var state: FetchState = .start
-    
-    let count: Int  = 5
     
     let service = APIService()
     
-   // var subscriptions = Set<AnyCancellable>()
-    
-//    init(){
-//        feachTrends()
-//    }
-    
-    func feachTrends() {
-        
-        
-        guard state == .start else {return}
-        
-        
+    func feach(song: Song) {
+
+        let albumID = song.collectionID
         state = .isLoading
         
-        service.feachTrends(count: count) {[weak self] result in
+        service.feachAlbum(for: albumID) {[weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
                     self?.state = .error("Could not load: \(error.localizedDescription)")
                 case .success(let results):
-                    self?.trends = results.first?.adams ?? []
+                    self?.album = results.results.first
                     self?.state = .start
                 }
             }
         }
     }
-
 }
-

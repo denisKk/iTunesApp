@@ -19,46 +19,71 @@ struct AlbumDetailView: View {
     
     var body: some View {
         VStack {
-            HStack(alignment: .top) {
-                ImageLoadingView(urlString: album.artworkUrl100, size: 150)
-                VStack(alignment: .leading) {
-                    Text(album.collectionName)
-                        .font(.title3)
-                        .lineLimit(2)
-    
-                    Text(album.artistName)
-                        .font(.body)
-                        .foregroundColor(.secondary)
-                    
-                    
-                    
-                    HStack(alignment: .bottom) {
-                        VStack(alignment: .leading) {
-                            Text(album.primaryGenreName)
-                            Text("\(album.trackCount) songs")
-                            Text("Release: \(formattedDate(value: album.releaseDate))")
-                        }
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                         
-                        Spacer()
-                        
-                        BuyButton(price: album.collectionPrice, currency: album.currency, urlString: album.collectionViewURL)
-                    }
-                    .frame(maxHeight: .infinity, alignment: .bottom)
-                }
-            }
-            .frame(height: 150)
-            .padding(.horizontal, 8)
+            AlbumHaderDetailView(album: album)
             
             ScrollView{
-                AlbumItemsListView(songsViewModel: songsItemsViewModel)
+                AlbumItemsListView(songsViewModel: songsItemsViewModel, selectedSong: nil)
             }
            
         }
         .onAppear {
             songsItemsViewModel.fetch()
         }
+        
+    }
+    
+    
+}
+
+struct AlbumDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        AlbumDetailView(album: Album.example())
+    }
+}
+
+struct AlbumHaderDetailView: View {
+    
+    let album: Album
+    
+    var body: some View {
+        HStack(alignment: .top) {
+            ImageLoadingView(urlString: album.artworkUrl100, size: 150)
+            VStack(alignment: .leading) {
+                Text(album.collectionName)
+                    .font(.title3)
+                    .lineLimit(2)
+                
+                Text(album.artistName)
+                    .font(.body)
+                    .foregroundColor(.secondary)
+                
+                
+                
+                HStack(alignment: .bottom) {
+                    VStack(alignment: .leading) {
+                        Text(album.primaryGenreName)
+                        Text("\(album.trackCount) songs")
+                        Text("Release: \(formattedDate(value: album.releaseDate))")
+                    }
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    
+                    Spacer()
+                    
+                    BuyButton(price: album.collectionPrice, currency: album.currency, urlString: album.collectionViewURL)
+                }
+                .frame(maxHeight: .infinity, alignment: .bottom)
+                
+            }
+            
+        }
+        .frame(height: 150)
+        .padding()
+        .background(
+            Color(.systemBackground)
+                .edgesIgnoringSafeArea(.top)
+                .shadow(radius: 5)
+        )
         
     }
     
@@ -73,11 +98,5 @@ struct AlbumDetailView: View {
         dateFormatter.dateFormat = "dd MMM yyyy"
         
         return dateFormatter.string(from: date)
-    }
-}
-
-struct AlbumDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        AlbumDetailView(album: Album.example())
     }
 }

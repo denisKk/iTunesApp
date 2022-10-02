@@ -14,6 +14,11 @@ class APIService {
         feth(type: AlbumResults.self, url: url, completion: completion)
     }
     
+    func feachAlbum(for albumID: Int, completion: @escaping (Result<AlbumResults, APIError>) -> ()){
+        let url = createURL(for: albumID, type: .album)
+        feth(type: AlbumResults.self, url: url, completion: completion)
+    }
+    
     func feachSongs(for albumID: Int, completion: @escaping (Result<SongResults, APIError>) -> ()){
         let url = createURL(for: albumID)
         feth(type: SongResults.self, url: url, completion: completion)

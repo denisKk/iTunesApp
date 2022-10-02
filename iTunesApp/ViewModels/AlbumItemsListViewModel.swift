@@ -40,7 +40,7 @@ class AlbumItemsListViewModel: ObservableObject {
                         _ = songs.removeFirst()
                     }
                     
-                    self?.songs = songs
+                    self?.songs = songs.sorted(by: {$0.trackNumber < $1.trackNumber})
                     self?.state = .start
                 }
             }

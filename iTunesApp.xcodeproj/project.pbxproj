@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B8085F8728E61B10002E6AAE /* SongDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8085F8628E61B10002E6AAE /* SongDetailView.swift */; };
+		B8085F8928E62203002E6AAE /* AlbumForSongViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8085F8828E62203002E6AAE /* AlbumForSongViewModel.swift */; };
 		B8ABF27B28E4EEEB004312F8 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8ABF27A28E4EEEB004312F8 /* Color+.swift */; };
 		B8ABF27D28E4FF19004312F8 /* TrendsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8ABF27C28E4FF19004312F8 /* TrendsListViewModel.swift */; };
 		B8ABF27F28E500C4004312F8 /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8ABF27E28E500C4004312F8 /* Trend.swift */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		B8085F8628E61B10002E6AAE /* SongDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailView.swift; sourceTree = "<group>"; };
+		B8085F8828E62203002E6AAE /* AlbumForSongViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumForSongViewModel.swift; sourceTree = "<group>"; };
 		B8ABF27A28E4EEEB004312F8 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		B8ABF27C28E4FF19004312F8 /* TrendsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsListViewModel.swift; sourceTree = "<group>"; };
 		B8ABF27E28E500C4004312F8 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				B8BF859B28DB4D730075D2F7 /* MovieListViewModel.swift */,
 				B8B96CAD28DCED7700700609 /* AlbumItemsListViewModel.swift */,
 				B8ABF27C28E4FF19004312F8 /* TrendsListViewModel.swift */,
+				B8085F8828E62203002E6AAE /* AlbumForSongViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				B8BF859C28DB4D730075D2F7 /* MovieListViewModel.swift in Sources */,
 				B8BF857728DA40A70075D2F7 /* iTunesAppApp.swift in Sources */,
 				B8BF859228DA6CBF0075D2F7 /* AlbumSearchView.swift in Sources */,
+				B8085F8928E62203002E6AAE /* AlbumForSongViewModel.swift in Sources */,
 				B8B96CBA28DDEEA800700609 /* AlbumItemsListView.swift in Sources */,
 				B8BF85AD28DB7C950075D2F7 /* SongListView.swift in Sources */,
 				B8BF85A628DB57DC0075D2F7 /* SearchAllListView.swift in Sources */,

@@ -10,6 +10,7 @@ import SwiftUI
 struct AlbumItemsListView: View {
     
     @ObservedObject var songsViewModel: AlbumItemsListViewModel
+    let selectedSong: Song?
     
     var body: some View {
         
@@ -35,6 +36,8 @@ struct AlbumItemsListView: View {
                     }
                     
                 }
+                .id(song.trackNumber)
+                .foregroundColor(selectedSong == song ? Color.accentColor : Color.primary)
                 Divider()
             }
         }
@@ -53,6 +56,6 @@ struct AlbumItemsListView: View {
 
 struct AlbumItemsListView_Previews: PreviewProvider {
     static var previews: some View {
-        AlbumItemsListView(songsViewModel: AlbumItemsListViewModel.example())
+        AlbumItemsListView(songsViewModel: AlbumItemsListViewModel.example(), selectedSong: nil)
     }
 }
