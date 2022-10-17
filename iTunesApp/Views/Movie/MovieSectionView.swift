@@ -16,11 +16,11 @@ struct MovieSectionView: View {
             LazyHStack(alignment: .top) {
                 ForEach(movies){ movie in
                     VStack {
-                        ImageLoadingView(urlString: movie.artworkUrl100, size: 120)
+                        ImageLoadingView(urlString: movie.artworkUrl100, size: 100)
                         Text(movie.trackName)
                     }
                     .lineLimit(2)
-                    .frame(width: 100)
+                    .frame(width: 80)
                 }
             }
         }

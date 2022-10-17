@@ -12,14 +12,12 @@ import Combine
 //https://itunes.apple.com/search?term=jack+johnson&entity=song&limit=5
 //https://itunes.apple.com/search?term=jack+johnson&entity=movie&limit=5
 
-
-
 class AlbumListViewModel: ObservableObject {
     
     
     @Published var searchTerm: String = ""
     @Published var albums: [Album] = []
-    @Published var state: FetchState = .start
+    @Published var state: FetchState = .start 
     
     let limit: Int  = 20
     var page: Int = 0
@@ -29,12 +27,13 @@ class AlbumListViewModel: ObservableObject {
     var subscriptions = Set<AnyCancellable>()
     
     init(){
+        
         $searchTerm
             .removeDuplicates()
             .dropFirst()
             .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
             .sink { [weak self] term in
-                self?.albums.removeAll()
+                self?.albums = []
                 self?.page = 0
                 self?.state = .start
                 self?.feachAlbums(for: term)
@@ -49,6 +48,7 @@ class AlbumListViewModel: ObservableObject {
         
         guard searchTerm.isEmpty == false else {return}
         guard state == .start else {return}
+        
         let offset = page * limit
         
         state = .isLoading

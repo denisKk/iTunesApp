@@ -19,7 +19,6 @@ class AlbumItemsListViewModel: ObservableObject {
     
     func fetch(){
         fetchSongs(for: albumID)
-        print("FETCH")
     }
     
     private var service = APIService()
@@ -32,8 +31,6 @@ class AlbumItemsListViewModel: ObservableObject {
                 case .failure(let error):
                     self?.state = .error("Could not load: \(error.localizedDescription)")
                 case .success(let results):
-                    
-                    print("OK")
                     var songs = results.results
                     
                     if results.resultCount > 0 {

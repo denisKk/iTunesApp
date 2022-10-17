@@ -13,39 +13,44 @@ struct AlbumListView: View {
     
     var body: some View {
         
-        List{
-            ForEach(albumListViewModel.albums) { album in
-                NavigationLink {
-                    AlbumDetailView(album: album)
-                } label: {
-                    AlbumRowView(album: album)
+        ScrollView {
+            LazyVStack{
+                ForEach(Array(Set(albumListViewModel.albums))) { album in
+                    NavigationLink {
+                        AlbumDetailView(album: album)
+                    } label: {
+                        AlbumRowView(album: album)
+                    }
+                }
+                
+                switch albumListViewModel.state {
+                case .start:
+                    if albumListViewModel.albums.count > 0 {
+                        Color.clear
+                            .onAppear{
+                                albumListViewModel.loadMore()
+                            }
+                    }
+                case .isLoading:
+                    ProgressView()
+                        .progressViewStyle(.circular)
+
+                case .error(let message):
+                    Text(message)
+                        .foregroundColor(.red)
+
+                default:
+                    Color.clear
                 }
             }
-            
-            switch albumListViewModel.state {
-            case .start:
-                Color.clear
-                    .onAppear{
-                        albumListViewModel.loadMore()
-                    }
-            case .isLoading:
-                ProgressView()
-                    .progressViewStyle(.circular)
-                    
-            case .error(let message):
-                Text(message)
-                    .foregroundColor(.red)
-                
-            default:
-                Color.clear
-            }
         }
-        .listStyle(.plain)
+        .padding(.horizontal)
+        .background(Color.bg)
     }
 }
 
 struct AlbumListView_Previews: PreviewProvider {
     static var previews: some View {
-        AlbumListView(albumListViewModel: AlbumListViewModel())
+        AlbumListView(albumListViewModel: AlbumListViewModel.example())
     }
 }

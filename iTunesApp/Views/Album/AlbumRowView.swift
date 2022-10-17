@@ -17,9 +17,10 @@ struct AlbumRowView: View {
             ImageLoadingView(urlString: album.artworkUrl100, size: 100)
             VStack(alignment: .leading){
                 Text(album.collectionName)
+                    .foregroundColor(.fontPrimary)
                 Text(album.artistName)
                     .font(.caption)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.fontSecondary)
                     .padding(.trailing, 16)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
@@ -27,12 +28,12 @@ struct AlbumRowView: View {
             
             BuyButton(price: album.collectionPrice, currency: album.currency, urlString: album.collectionViewURL)
         }
-        
     }
 }
 
 struct AlbumRowView_Previews: PreviewProvider {
     static var previews: some View {
         AlbumRowView(album: Album.example())
+            .background(Color.bg)
     }
 }

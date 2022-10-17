@@ -98,6 +98,6 @@ class APIService {
     }
     
     func createTrendsURL(count: Int) -> URL?{
-        return URL(string: "https://rss.applemarketingtools.com/api/v2/ru/music/most-played/\(count)/songs.js")
+        return URL(string: "https://rss.applemarketingtools.com/api/v2/us/music/most-played/\(count)/songs.js")
     }
 }

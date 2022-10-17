@@ -17,8 +17,10 @@ struct AlbumSectionView: View {
                     VStack (alignment: .leading){
                         ImageLoadingView(urlString: album.artworkUrl100, size: 100)
                         Text(album.collectionName)
-                            .font(.title3)
+                            .font(.footnote)
                         Text(album.artistName)
+                            .font(.caption)
+                            .foregroundColor(.fontSecondary)
                     }
                     .lineLimit(2)
                     .frame(width: 100)
@@ -26,7 +28,6 @@ struct AlbumSectionView: View {
                 }
             }
             .padding(.bottom, 8)
-            .padding(.horizontal, 1)
         }
     }
 }

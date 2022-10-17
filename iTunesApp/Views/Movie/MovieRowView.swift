@@ -16,9 +16,10 @@ struct MovieRowView: View {
             ImageLoadingView(urlString: movie.artworkUrl100, size: 100)
             VStack(alignment: .leading){
                 Text(movie.trackName)
+                    .foregroundColor(.fontPrimary)
                 Text(movie.artistName)
                     .font(.caption)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.fontSecondary)
                     .padding(.trailing, 16)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }

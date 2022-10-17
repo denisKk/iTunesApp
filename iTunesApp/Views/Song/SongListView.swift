@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct SongListView: View {
     
@@ -13,35 +14,50 @@ struct SongListView: View {
     
     var body: some View {
         
-        List{
-            ForEach(songListViewModel.songs) { song in
-                NavigationLink {
-                    SongDetailView(song: song)
-                } label: {
-                    SongRowView(song: song)
-                }
-                .buttonStyle(.plain)
-            }
+        
+        VStack(spacing: 0){
             
-            switch songListViewModel.state {
-            case .start:
-                Color.clear
-                    .onAppear{
-                        songListViewModel.loadMore()
-                    }
-            case .isLoading:
-                ProgressView()
-                    .progressViewStyle(.circular)
+            ScrollView{
+                LazyVStack {
+                    rows()
                     
-            case .error(let message):
-                Text(message)
-                    .foregroundColor(.red)
-                
-            default:
-                Color.clear
+                    switch songListViewModel.state {
+                    case .start:
+                        if songListViewModel.songs.count > 0 {
+                            Color.clear
+                                .onAppear{
+                                    songListViewModel.loadMore()
+                                }
+                        }
+                    case .isLoading:
+                        ProgressView()
+                            .progressViewStyle(.circular)
+                        
+                    case .error(let message):
+                        Text(message)
+                            .foregroundColor(.red)
+                        
+                    default:
+                        Color.clear
+                    }
+                }
             }
+            .padding(.horizontal)
+            .background(Color.bg)
+            
         }
-        .listStyle(.plain)
+    }
+    
+    func rows() -> some View {
+        ForEach(Array(Set(songListViewModel.songs))) { song in
+            NavigationLink {
+                SongDetailView(song: song)
+                
+            } label: {
+                SongRowView(song: song)
+            }
+            .buttonStyle(.plain)
+        }
     }
 }
 

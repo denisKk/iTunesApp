@@ -13,30 +13,35 @@ struct MovieListView: View {
     
     var body: some View {
         
-        List{
-            ForEach(movieListViewModel.movies) { movie in
-                MovieRowView(movie: movie)
-            }
-            
-            switch movieListViewModel.state {
-            case .isLoading:
-                ProgressView()
-                    .progressViewStyle(.circular)
-                    
-            case .error(let message):
-                Text(message)
-                    .foregroundColor(.red)
+        ScrollView {
+            LazyVStack{
+                ForEach(movieListViewModel.movies) { movie in
+                    MovieRowView(movie: movie)
+                        .padding(.horizontal)
+                }
                 
-            default:
-                Color.clear
+                switch movieListViewModel.state {
+                case .isLoading:
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                        
+                case .error(let message):
+                    Text(message)
+                        .foregroundColor(.red)
+                    
+                default:
+                    Color.clear
+                }
             }
+            .listStyle(.plain)
         }
-        .listStyle(.plain)
+        .background(Color.bg)
     }
+    
 }
 
 struct MovieListView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieListView()
+        MovieListView(movieListViewModel: MovieListViewModel.example())
     }
 }

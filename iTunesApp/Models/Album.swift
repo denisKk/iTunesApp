@@ -5,11 +5,6 @@
 //  Created by Dev on 20.09.22.
 //
 
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let albumResults = try? newJSONDecoder().decode(AlbumResults.self, from: jsonData)
-
 import Foundation
 
 // MARK: - AlbumResults
@@ -19,7 +14,7 @@ struct AlbumResults: Codable {
 }
 
 // MARK: - Album
-struct Album: Codable, Identifiable {
+struct Album: Codable, Identifiable, Hashable {
     let wrapperType, collectionType: String
     let id: Int
     let artistID: Int

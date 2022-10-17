@@ -20,17 +20,20 @@ struct SongDetailView: View {
     }
     
     var body: some View {
-        VStack {
+        VStack() {
             
             if let album = albumViewModel.album {
                 AlbumHaderDetailView(album: album)
             } else {
                 ProgressView()
                     .progressViewStyle(.circular)
+                    .onAppear {
+                        albumViewModel.feach(song: song)
+                        songsItemsViewModel.fetch()
+                    }
             }
             
             ScrollViewReader { proxy in
-                ScrollView{
                     
                     if songsItemsViewModel.state == .isLoading {
                         ProgressView()
@@ -41,13 +44,10 @@ struct SongDetailView: View {
                                 proxy.scrollTo(song.trackNumber, anchor: .center)
                             }
                     }
-                }
-                .onAppear {
-                    songsItemsViewModel.fetch()
-                    albumViewModel.feach(song: song)
-                }
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.bg)
     }
 }
 

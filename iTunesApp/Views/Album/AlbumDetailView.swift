@@ -20,15 +20,12 @@ struct AlbumDetailView: View {
     var body: some View {
         VStack {
             AlbumHaderDetailView(album: album)
-            
-            ScrollView{
-                AlbumItemsListView(songsViewModel: songsItemsViewModel, selectedSong: nil)
-            }
-           
+            AlbumItemsListView(songsViewModel: songsItemsViewModel, selectedSong: nil)
         }
         .onAppear {
             songsItemsViewModel.fetch()
         }
+        .background(Color.bg)
         
     }
     
@@ -48,14 +45,18 @@ struct AlbumHaderDetailView: View {
     var body: some View {
         HStack(alignment: .top) {
             ImageLoadingView(urlString: album.artworkUrl100, size: 150)
+            
+            
             VStack(alignment: .leading) {
                 Text(album.collectionName)
                     .font(.title3)
-                    .lineLimit(2)
+                    .lineLimit(3)
+                    .foregroundColor(.fontPrimary)
+                    .minimumScaleFactor(0.8)
                 
                 Text(album.artistName)
                     .font(.body)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.fontSecondary)
                 
                 
                 
@@ -66,7 +67,7 @@ struct AlbumHaderDetailView: View {
                         Text("Release: \(formattedDate(value: album.releaseDate))")
                     }
                     .font(.caption)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.fontSecondary)
                     
                     Spacer()
                     
@@ -74,13 +75,13 @@ struct AlbumHaderDetailView: View {
                 }
                 .frame(maxHeight: .infinity, alignment: .bottom)
                 
+                
             }
-            
         }
         .frame(height: 150)
         .padding()
         .background(
-            Color(.systemBackground)
+            Color.bg
                 .edgesIgnoringSafeArea(.top)
                 .shadow(radius: 5)
         )

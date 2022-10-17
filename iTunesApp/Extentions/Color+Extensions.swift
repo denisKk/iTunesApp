@@ -9,8 +9,10 @@ import SwiftUI
 
 extension Color {
     static let bg = Color("BGColor")
+    static let bgSecondary = Color("BGSecondaryColor")
     static let box = Color("BoxColor")
     static let accent = Color("AccentColor")
+    static let main = Color("MainColor")
     static let fontPrimary = Color("FontPrimaryColor")
     static let fontSecondary = Color("FontSecondaryColor")
     static let gradient = Gradient(colors: [ Color("GradientStartColor"), Color("GragientEndColor")])

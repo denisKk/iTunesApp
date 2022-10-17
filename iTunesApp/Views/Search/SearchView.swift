@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct SearchView: View {
     
@@ -19,16 +20,13 @@ struct SearchView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Picker("", selection: $selectedEntityType) {
-                    ForEach(EntityType.allCases) { type in
-                        Text(type.name())
-                            .tag(type)
-                    }
-                }
-                .pickerStyle(.segmented)
-                .padding(.horizontal)
                 
+                SearchBarView(searhTerm: $searchTerm)
+                    .padding(.horizontal, 10)
                 
+                CasePicker(selectedTab: $selectedEntityType)
+                    .padding(.horizontal, 10)
+             
                 Divider()
                 
                 if searchTerm.isEmpty {
@@ -48,9 +46,21 @@ struct SearchView: View {
                 
                 
             }
-            .navigationTitle("Search")
-            .searchable(text: $searchTerm)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                        ToolbarItem(placement: .principal) {
+                            HStack() {
+                                Text("Library")
+                                    .font(.title)
+                                    .padding(.bottom, 12)
+                                Spacer()
+                            }
+                            
+                        }
+                    }
             .frame(maxHeight: .infinity, alignment: .top)
+            .background(Color.bg)
+            .foregroundColor(.fontPrimary)
             
         }
         .onChange(of: selectedEntityType, perform: { newValue in
@@ -59,9 +69,12 @@ struct SearchView: View {
         .onChange(of: searchTerm) { newValue in
             updateViewModels(with: newValue, selectedEntityType: selectedEntityType)
         }
+        .background(.green)
+        
     }
     
     func updateViewModels(with searchTerm: String, selectedEntityType: EntityType) {
+        
         switch selectedEntityType {
         case .all:
             albumListViewModel.searchTerm = searchTerm

@@ -26,7 +26,11 @@ struct BuyButton: View {
     func formattedPrice() -> String? {
         
         guard let price = price else {
-            return ""
+            return "album"
+        }
+        
+        if price < 0 {
+            return "free"
         }
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
@@ -37,7 +41,11 @@ struct BuyButton: View {
 }
 struct BuyButton_Previews: PreviewProvider {
     static var previews: some View {
-        let example = Song.example()
-        BuyButton(price: example.trackPrice, currency: example.currency, urlString: example.previewURL)
+        ZStack{
+            let example = Song.example()
+            BuyButton(price: example.trackPrice, currency: example.currency, urlString: example.previewURL)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.bg)
     }
 }

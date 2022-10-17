@@ -17,9 +17,11 @@ struct SongRowView: View {
             
             VStack(alignment: .leading) {
                 Text(song.trackName)
+                    .font(.footnote)
+                    .foregroundColor(.fontPrimary)
                 Text("\(song.artistName) - \(song.collectionName)")
                     .font(.caption)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.fontSecondary)
                     .padding(.trailing, 16)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }

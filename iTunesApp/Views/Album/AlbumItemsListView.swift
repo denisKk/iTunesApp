@@ -9,39 +9,49 @@ import SwiftUI
 
 struct AlbumItemsListView: View {
     
-    @ObservedObject var songsViewModel: AlbumItemsListViewModel
+    @StateObject var songsViewModel: AlbumItemsListViewModel
     let selectedSong: Song?
     
     var body: some View {
         
-        VStack {
-            
-            ForEach(songsViewModel.songs){ song in
-                
-                HStack {
-                    Text("\(song.trackNumber)")
-                        .font(.caption)
-                        .frame(width: 30)
-                    Text(song.trackName)
-                        .font(.body.weight(.bold))
-                    Spacer()
-                    Text(formattedDuration(time:song.trackTimeMillis))
-                        .font(.caption)
+        ScrollView {
+            LazyVStack{
+                ForEach(Array(Set(songsViewModel.songs)).sorted(by: {$0.trackNumber < $1.trackNumber})){ song in
                     
-                    if let price = song.trackPrice {
-                        BuyButton(price: price, currency: song.currency, urlString: song.previewURL)
+                    HStack {
+                        Text("\(song.trackNumber)")
+                            .font(.caption)
+                            .fontWeight(selectedSong == song ? .bold : .regular)
+                            .frame(width: 30)
+                            .foregroundColor(.fontSecondary)
+                            
+                        Text(song.trackName)
+                            .font(.body)
+                            .foregroundColor(selectedSong == song ? Color.main : .fontPrimary)
+                            .fontWeight(selectedSong == song ? .bold : .regular)
+                        Spacer()
+                        Text(formattedDuration(time:song.trackTimeMillis))
+                            .font(.caption)
+                            .foregroundColor(.fontSecondary)
+                            .fontWeight(selectedSong == song ? .bold : .regular)
+                        
+                        if let price = song.trackPrice {
+                            BuyButton(price: price, currency: song.currency, urlString: song.previewURL)
+                        }
+                        else {
+                            Text("album only")
+                        }
+                        
                     }
-                    else {
-                        Text("album only")
-                    }
+                    .id(song.trackNumber)
                     
+                    Divider()
+                        .background(Color.fontSecondary)
                 }
-                .id(song.trackNumber)
-                .foregroundColor(selectedSong == song ? Color.accentColor : Color.primary)
-                Divider()
             }
         }
-        .padding()
+        .padding(.horizontal)
+        .background(Color.bg)
     }
     
     func formattedDuration(time: Int) -> String {

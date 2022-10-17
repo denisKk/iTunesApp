@@ -9,8 +9,6 @@ import Foundation
 import Combine
 
 class TrendsListViewModel: ObservableObject {
-    
-    
    
     @Published var trends: [Adam] = []
     @Published var state: FetchState = .start
@@ -18,18 +16,10 @@ class TrendsListViewModel: ObservableObject {
     let count: Int  = 5
     
     let service = APIService()
-    
-   // var subscriptions = Set<AnyCancellable>()
-    
-//    init(){
-//        feachTrends()
-//    }
+
     
     func feachTrends() {
-        
-        
         guard state == .start else {return}
-        
         
         state = .isLoading
         

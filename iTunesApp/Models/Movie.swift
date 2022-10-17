@@ -5,11 +5,6 @@
 //  Created by Dev on 20.09.22.
 //
 
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let songResults = try? newJSONDecoder().decode(SongResults.self, from: jsonData)
-
 import Foundation
 
 // MARK: - MovieResults
