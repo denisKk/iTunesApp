@@ -41,7 +41,7 @@ struct SongDetailView: View {
                     } else if songsItemsViewModel.songs.count > 0 {
                         AlbumItemsListView(songsViewModel: songsItemsViewModel, selectedSong: song)
                             .onAppear{
-                                proxy.scrollTo(song.trackNumber, anchor: .center)
+                                proxy.scrollTo(song.id, anchor: .center)
                             }
                     }
             }

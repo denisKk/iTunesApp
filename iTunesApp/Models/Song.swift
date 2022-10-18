@@ -26,6 +26,7 @@ struct Song: Codable, Identifiable, Equatable, Hashable {
     let collectionPrice, trackPrice: Double?
     let releaseDate: String?
     let trackCount, trackNumber: Int
+    let discNumber: Int?
     let trackTimeMillis: Int
     let country, currency, primaryGenreName: String
     let collectionArtistName: String?
@@ -35,7 +36,7 @@ struct Song: Codable, Identifiable, Equatable, Hashable {
         case artistID = "artistId"
         case collectionID = "collectionId"
         case id = "trackId"
-        case artistName, collectionName, trackName
+        case artistName, collectionName, trackName, discNumber
         case artistViewURL = "artistViewUrl"
         case collectionViewURL = "collectionViewUrl"
         case trackViewURL = "trackViewUrl"
@@ -43,7 +44,7 @@ struct Song: Codable, Identifiable, Equatable, Hashable {
         case artworkUrl30, artworkUrl60, artworkUrl100, collectionPrice, trackPrice, releaseDate, trackCount, trackNumber, trackTimeMillis, country, currency, primaryGenreName,  collectionArtistName
     }
     
-    init(wrapperType: String, artistID: Int, collectionID: Int, id: Int, artistName: String, collectionName: String, trackName: String, artistViewURL: String, collectionViewURL: String, trackViewURL: String, previewURL: String, artworkUrl30: String, artworkUrl60: String, artworkUrl100: String, collectionPrice: Double?, trackPrice: Double?, releaseDate: String?, trackCount: Int, trackNumber: Int, trackTimeMillis: Int, country: String, currency: String, primaryGenreName: String, collectionArtistName: String?) {
+    init(wrapperType: String, artistID: Int, collectionID: Int, id: Int, artistName: String, collectionName: String, trackName: String, artistViewURL: String, collectionViewURL: String, trackViewURL: String, previewURL: String, artworkUrl30: String, artworkUrl60: String, artworkUrl100: String, collectionPrice: Double?, trackPrice: Double?, releaseDate: String?, trackCount: Int, trackNumber: Int, trackTimeMillis: Int, country: String, currency: String, primaryGenreName: String, collectionArtistName: String?, discNumber: Int?) {
         self.wrapperType = wrapperType
         self.artistID = artistID
         self.collectionID = collectionID
@@ -68,6 +69,7 @@ struct Song: Codable, Identifiable, Equatable, Hashable {
         self.currency = currency
         self.primaryGenreName = primaryGenreName
         self.collectionArtistName = collectionArtistName
+        self.discNumber = discNumber
     }
 
     
@@ -91,6 +93,7 @@ struct Song: Codable, Identifiable, Equatable, Hashable {
         self.trackPrice = try container.decodeIfPresent(Double.self, forKey: .trackPrice)
         self.releaseDate = try container.decodeIfPresent(String.self, forKey: .releaseDate)
         self.trackCount = try container.decode(Int.self, forKey: .trackCount)
+        self.discNumber = try container.decodeIfPresent(Int.self, forKey: .discNumber)
         self.trackNumber = try container.decodeIfPresent(Int.self, forKey: .trackNumber) ?? 1
         self.trackTimeMillis = try container.decodeIfPresent(Int.self, forKey: .trackTimeMillis) ?? 1
         self.country = try container.decode(String.self, forKey: .country)
@@ -105,6 +108,6 @@ struct Song: Codable, Identifiable, Equatable, Hashable {
     Song(wrapperType: "Song", artistID: 1, collectionID: 1, id: 1, artistName: "Jack Johnson",
          collectionName: "Jack Johnson and Friends: Sing-A-Longs and Lullabies for the Film Curious George",
          trackName: "Upside Down", artistViewURL: "https://music.apple.com/us/album/jack-johnson-and-friends-sing-a-longs-and/1469577723?uo=4", collectionViewURL: "", trackViewURL: "https://music.apple.com/us/album/upside-down/1469577723?i=1469577741&uo=4", previewURL: "https://music.apple.com/us/album/jack-johnson-and-friends-sing-a-longs-and/1469577723?uo=4",
-         artworkUrl30: "https://is3-ssl.mzstatic.com/image/thumb/Music115/v4/08/11/d2/0811d2b3-b4d5-dc22-1107-3625511844b5/00602537869770.rgb.jpg/30x30bb.jpg", artworkUrl60: "https://is3-ssl.mzstatic.com/image/thumb/Music115/v4/08/11/d2/0811d2b3-b4d5-dc22-1107-3625511844b5/00602537869770.rgb.jpg/60x60bb.jpg", artworkUrl100: "https://is3-ssl.mzstatic.com/image/thumb/Music115/v4/08/11/d2/0811d2b3-b4d5-dc22-1107-3625511844b5/00602537869770.rgb.jpg/100x100bb.jpg", collectionPrice: 9.88, trackPrice: 1.29, releaseDate: "2005-01-01T12:00:00Z", trackCount: 14, trackNumber: 1, trackTimeMillis: 208643, country: "USA", currency: "USD", primaryGenreName: "Rock", collectionArtistName: nil)
+         artworkUrl30: "https://is3-ssl.mzstatic.com/image/thumb/Music115/v4/08/11/d2/0811d2b3-b4d5-dc22-1107-3625511844b5/00602537869770.rgb.jpg/30x30bb.jpg", artworkUrl60: "https://is3-ssl.mzstatic.com/image/thumb/Music115/v4/08/11/d2/0811d2b3-b4d5-dc22-1107-3625511844b5/00602537869770.rgb.jpg/60x60bb.jpg", artworkUrl100: "https://is3-ssl.mzstatic.com/image/thumb/Music115/v4/08/11/d2/0811d2b3-b4d5-dc22-1107-3625511844b5/00602537869770.rgb.jpg/100x100bb.jpg", collectionPrice: 9.88, trackPrice: 1.29, releaseDate: "2005-01-01T12:00:00Z", trackCount: 14, trackNumber: 1, trackTimeMillis: 208643, country: "USA", currency: "USD", primaryGenreName: "Rock", collectionArtistName: nil, discNumber: 1)
     }
 }

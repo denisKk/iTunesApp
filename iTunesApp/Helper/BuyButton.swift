@@ -20,18 +20,23 @@ struct BuyButton: View {
                 }
                 .buttonStyle(BuyButtonStyle())
             }
+            else {
+                Text("album only".localizedUppercase)
+                    .font(.caption)
+                    .foregroundColor(.fontPrimary)
+                    
+            }
         }
     }
+        
     
-    func formattedPrice() -> String? {
+    
+func formattedPrice() -> String? {
         
-        guard let price = price else {
-            return "album"
+        guard let price = price, price > 0 else {
+            return nil
         }
-        
-        if price < 0 {
-            return "free"
-        }
+    
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.currencyCode = currency
