@@ -23,7 +23,7 @@ struct TrendsView: View {
                     .frame(maxHeight: .infinity, alignment: .top)
             case .isLoading:
                 ProgressView()
-                    .progressViewStyle(.circular)
+                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
             default:
                 pupularsList()
             }

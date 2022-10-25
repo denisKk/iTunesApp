@@ -15,7 +15,7 @@ struct AlbumListView: View {
         
         ScrollView {
             LazyVStack{
-                ForEach(Array(Set(albumListViewModel.albums))) { album in
+                ForEach(albumListViewModel.albums) { album in
                     NavigationLink {
                         AlbumDetailView(album: album)
                     } label: {
@@ -33,7 +33,7 @@ struct AlbumListView: View {
                     }
                 case .isLoading:
                     ProgressView()
-                        .progressViewStyle(.circular)
+                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
 
                 case .error(let message):
                     Text(message)

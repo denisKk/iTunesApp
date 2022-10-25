@@ -31,7 +31,7 @@ class AlbumListViewModel: ObservableObject {
         $searchTerm
             .removeDuplicates()
             .dropFirst()
-            .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
+            .debounce(for: .seconds(0.6), scheduler: RunLoop.main)
             .sink { [weak self] term in
                 self?.albums = []
                 self?.page = 0
@@ -45,7 +45,6 @@ class AlbumListViewModel: ObservableObject {
     }
     
     func feachAlbums(for searchTerm: String) {
-        
         guard searchTerm.isEmpty == false else {return}
         guard state == .start else {return}
         

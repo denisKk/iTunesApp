@@ -31,7 +31,7 @@ struct SongListView: View {
                         }
                     case .isLoading:
                         ProgressView()
-                            .progressViewStyle(.circular)
+                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
                         
                     case .error(let message):
                         Text(message)
@@ -49,7 +49,7 @@ struct SongListView: View {
     }
     
     func rows() -> some View {
-        ForEach(Array(Set(songListViewModel.songs))) { song in
+        ForEach(songListViewModel.songs) { song in
             NavigationLink {
                 SongDetailView(song: song)
                 

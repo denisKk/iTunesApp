@@ -26,13 +26,14 @@ struct SongDetailView: View {
                 AlbumHaderDetailView(album: album)
             } else {
                 ProgressView()
-                    .progressViewStyle(.circular)
+                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
                     .onAppear {
                         albumViewModel.feach(song: song)
                         songsItemsViewModel.fetch()
                     }
+               
             }
-            
+            Spacer()
             ScrollViewReader { proxy in
                     
                     if songsItemsViewModel.state == .isLoading {

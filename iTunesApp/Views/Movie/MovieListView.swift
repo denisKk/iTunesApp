@@ -23,7 +23,7 @@ struct MovieListView: View {
                 switch movieListViewModel.state {
                 case .isLoading:
                     ProgressView()
-                        .progressViewStyle(.circular)
+                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
                         
                 case .error(let message):
                     Text(message)
