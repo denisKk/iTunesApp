@@ -1,5 +1,8 @@
 <H1>iTunesApp</H1>
 
+<p>
+  A simple SwiftUI application for load and show songs, albums and movies using iTunes Search API
+ </p>
 
 <img src="/Images/iTunesAppRec.gif" width="190" height="400" />
 
