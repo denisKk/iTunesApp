@@ -7,7 +7,7 @@
 
 import Foundation
 
-class APIService {
+final class APIService {
     
     func feachAlbums(for searchTerm: String, page: Int, limit: Int, completion: @escaping (Result<AlbumResults, APIError>) -> ()) {
         let url = createURL(for: searchTerm, page: page, limit: limit)
