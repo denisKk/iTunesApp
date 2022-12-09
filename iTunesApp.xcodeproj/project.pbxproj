@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B8085F8728E61B10002E6AAE /* SongDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8085F8628E61B10002E6AAE /* SongDetailView.swift */; };
 		B8085F8928E62203002E6AAE /* AlbumForSongViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8085F8828E62203002E6AAE /* AlbumForSongViewModel.swift */; };
+		B80886932943663900A27198 /* LikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80886922943663900A27198 /* LikeView.swift */; };
 		B85970B128F6E67800EBA961 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85970B028F6E67800EBA961 /* NavigationBar.swift */; };
 		B85970DB28FECF4900EBA961 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B85970DA28FECF4900EBA961 /* Launch Screen.storyboard */; };
 		B873FB1928F44AB800D2F38D /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B873FB1828F44AB800D2F38D /* SearchBarView.swift */; };
@@ -53,6 +54,7 @@
 /* Begin PBXFileReference section */
 		B8085F8628E61B10002E6AAE /* SongDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailView.swift; sourceTree = "<group>"; };
 		B8085F8828E62203002E6AAE /* AlbumForSongViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumForSongViewModel.swift; sourceTree = "<group>"; };
+		B80886922943663900A27198 /* LikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeView.swift; sourceTree = "<group>"; };
 		B85970B028F6E67800EBA961 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		B85970DA28FECF4900EBA961 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		B873FB1828F44AB800D2F38D /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				B8BF857628DA40A70075D2F7 /* iTunesAppApp.swift */,
+				B80886922943663900A27198 /* LikeView.swift */,
 				B8BF857828DA40A70075D2F7 /* ContentView.swift */,
 				B8BF858428DA40C50075D2F7 /* Models */,
 				B8BF858A28DA40C50075D2F7 /* Views */,
@@ -380,6 +383,7 @@
 				B873FB1C28F474B900D2F38D /* CasePicker.swift in Sources */,
 				B8B96CAE28DCED7700700609 /* AlbumItemsListViewModel.swift in Sources */,
 				B8E52A0C28DC5F4C0010355A /* MovieSectionView.swift in Sources */,
+				B80886932943663900A27198 /* LikeView.swift in Sources */,
 				B8BF859628DB35980075D2F7 /* APIService.swift in Sources */,
 				B8BF85A428DB54140075D2F7 /* SearchView.swift in Sources */,
 				B8BF858E28DA40C50075D2F7 /* Album.swift in Sources */,
