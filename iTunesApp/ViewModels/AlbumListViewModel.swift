@@ -1,9 +1,4 @@
-//
-//  AlbumListViewModel.swift
-//  iTunes
-//
-//  Created by Dev on 20.09.22.
-//
+
 
 import Foundation
 import Combine
